@@ -15,6 +15,16 @@ pipeline {
          """
       }
     }
+    stage('VPN'){
+      steps {
+        sh """
+        cd 03-VPN
+        terraform init -reconfigure
+        terraform destroy -auto-approve
+
+        """
+      }
+    }
     stage('SG'){
       steps {
         sh """
@@ -36,16 +46,5 @@ pipeline {
       }
     }
 
-    stage('VPN'){
-      steps {
-        sh """
-        cd 03-VPN
-        terraform init -reconfigure
-        terraform destroy -auto-approve
-
-        """
-      }
-    }
-    
   }
 }
