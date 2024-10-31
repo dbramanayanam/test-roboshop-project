@@ -1,6 +1,8 @@
 pipeline {
-  node {
-    label 'java-agent'
+  agent {
+    node {
+        label 'java-agent'
+    }
   }
   stages {
     stage('VPC'){
